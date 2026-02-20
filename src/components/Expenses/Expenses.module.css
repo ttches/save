@@ -1,0 +1,34 @@
+.card {
+  background-color: #191831;
+  border: 1px solid #3d3554;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: #15152a;
+  border-radius: 8px;
+}
+
+.name {
+  color: #e8e2f4;
+  font-size: 0.875rem;
+}
+
+.cost {
+  color: #fad003;
+  font-size: 0.875rem;
+}
