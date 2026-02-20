@@ -9,6 +9,7 @@ type LabeledInputProps = {
   onChange: (value: string) => void;
   placeholder?: string;
   disabled?: boolean;
+  autoFocus?: boolean;
   labelExtra?: ReactNode;
   numeric?: boolean;
   allowDecimal?: boolean;
@@ -21,6 +22,7 @@ const LabeledInput = ({
   onChange,
   placeholder,
   disabled,
+  autoFocus,
   labelExtra,
   numeric = true,
   allowDecimal = false,
@@ -46,6 +48,7 @@ const LabeledInput = ({
         onChange={(e) => handleChange(e.target.value)}
         placeholder={placeholder}
         disabled={disabled}
+        autoFocus={autoFocus}
         autoComplete="off"
         className={styles.input}
       />

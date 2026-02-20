@@ -35,8 +35,10 @@
   flex-shrink: 0;
 }
 
-.addButton:hover {
+.addButton:hover,
+.addButton:focus {
   border-color: #d971d5;
   box-shadow: 0 0 0 2px #d971d5;
   color: #d971d5;
+  outline: none;
 }

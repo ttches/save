@@ -3,7 +3,7 @@ import LabeledInput from "../LabeledInput/LabeledInput";
 import { useExpenses } from "../../context/ExpensesContext";
 import styles from "./AddExpense.module.css";
 
-const AddExpense = () => {
+const AddExpense = ({ onAdd }: { onAdd?: () => void }) => {
   const [expense, setExpense] = useState("");
   const [monthlyCost, setMonthlyCost] = useState("");
   const { addExpense } = useExpenses();
@@ -14,6 +14,7 @@ const AddExpense = () => {
     addExpense(name, monthlyCost);
     setExpense("");
     setMonthlyCost("");
+    onAdd?.();
   };
 
   return (
@@ -25,6 +26,7 @@ const AddExpense = () => {
           value={expense}
           onChange={setExpense}
           numeric={false}
+          autoFocus
           placeholder="rent"
         />
         <LabeledInput
