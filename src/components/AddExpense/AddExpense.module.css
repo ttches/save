@@ -2,7 +2,7 @@
   background-color: #191831;
   border: 1px solid #3d3554;
   border-radius: 12px;
-  padding: 12px;
+  padding: 32px 12px;
 }
 
 .inputs {
@@ -31,7 +31,10 @@
   color: #a196e4;
   font-size: 1.25rem;
   cursor: pointer;
-  transition: border-color 0.2s, box-shadow 0.2s, color 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    color 0.2s;
   flex-shrink: 0;
 }
 

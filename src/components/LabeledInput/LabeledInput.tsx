@@ -42,6 +42,7 @@ const LabeledInput = ({
       </div>
       <input
         type="text"
+        inputMode={numeric ? "numeric" : undefined}
         id={name}
         name={name}
         value={displayValue}
