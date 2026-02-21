@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
+import { load } from "../utils/localStorage";
 
 type Expense = {
   name: string;
@@ -19,7 +20,7 @@ export const useExpenses = () => {
 };
 
 export const ExpensesProvider = ({ children }: { children: ReactNode }) => {
-  const [expenses, setExpenses] = useState<Expense[]>([]);
+  const [expenses, setExpenses] = useState<Expense[]>(() => load("expenses", []));
 
   const addExpense = (name: string, cost: string) => {
     setExpenses((prev) => [...prev, { name, cost }]);

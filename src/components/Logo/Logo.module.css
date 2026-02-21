@@ -4,6 +4,7 @@
   text-align: center;
   margin: 0;
   cursor: pointer;
+  user-select: none;
 }
 
 .purple {

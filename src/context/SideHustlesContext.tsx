@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
+import { load } from "../utils/localStorage";
 
 type SideHustle = {
   name: string;
@@ -19,7 +20,7 @@ export const useSideHustles = () => {
 };
 
 export const SideHustlesProvider = ({ children }: { children: ReactNode }) => {
-  const [sideHustles, setSideHustles] = useState<SideHustle[]>([]);
+  const [sideHustles, setSideHustles] = useState<SideHustle[]>(() => load("sideHustles", []));
 
   const addSideHustle = (name: string, income: string) => {
     setSideHustles((prev) => [...prev, { name, income }]);

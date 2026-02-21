@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
+import { load } from "../utils/localStorage";
 
 type IncomeContextType = {
   monthlyIncome: string;
@@ -16,8 +17,8 @@ export const useIncome = () => {
 };
 
 export const IncomeProvider = ({ children }: { children: ReactNode }) => {
-  const [monthlyIncome, setMonthlyIncome] = useState("");
-  const [savingsGoal, setSavingsGoal] = useState("");
+  const [monthlyIncome, setMonthlyIncome] = useState(() => load("monthlyIncome", ""));
+  const [savingsGoal, setSavingsGoal] = useState(() => load("savingsGoal", ""));
 
   return (
     <IncomeContext.Provider value={{ monthlyIncome, setMonthlyIncome, savingsGoal, setSavingsGoal }}>
