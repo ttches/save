@@ -1,0 +1,36 @@
+.card {
+  background-color: #191831;
+  border: 1px solid #3d3554;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: #15152a;
+  border-radius: 8px;
+}
+
+.label {
+  color: #a196e4;
+  font-size: 0.875rem;
+}
+
+.value {
+  color: #9fffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.dollar {
+  color: #9fffff;
+}

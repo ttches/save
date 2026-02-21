@@ -1,0 +1,15 @@
+.card {
+  background-color: #191831;
+  border: 1px solid #3d3554;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.inputs {
+  display: flex;
+  gap: 8px;
+}
+
+.inputs > * {
+  flex: 1;
+}

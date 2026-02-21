@@ -17,8 +17,12 @@ const AddExpense = ({ onAdd }: { onAdd?: () => void }) => {
     onAdd?.();
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") handleAdd();
+  };
+
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onKeyDown={handleKeyDown}>
       <div className={styles.inputs}>
         <LabeledInput
           label="expense"

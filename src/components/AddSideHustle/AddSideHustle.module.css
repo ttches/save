@@ -1,0 +1,44 @@
+.card {
+  background-color: #191831;
+  border: 1px solid #3d3554;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.inputs {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.inputs > *:first-child {
+  flex: 3;
+}
+
+.inputs > *:nth-child(2) {
+  flex: 2;
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #3d3554;
+  background-color: #15152a;
+  color: #a196e4;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.addButton:hover,
+.addButton:focus {
+  border-color: #d971d5;
+  box-shadow: 0 0 0 2px #d971d5;
+  color: #d971d5;
+  outline: none;
+}
