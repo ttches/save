@@ -1,6 +1,6 @@
-import type { Theme } from "@nivo/core";
+import type { PartialTheme } from "@nivo/theming";
 
-export const darkBudgetTheme: Theme = {
+export const darkBudgetTheme: PartialTheme = {
   background: "transparent",
   text: {
     fontSize: 12,
