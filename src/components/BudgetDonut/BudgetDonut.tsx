@@ -14,9 +14,10 @@ type BudgetDonutProps = {
   colors: string[];
   centerValue: number;
   onSliceClick?: (slice: DonutSlice) => void;
+  onCenterClick?: () => void;
 };
 
-const BudgetDonut = ({ data, colors, centerValue, onSliceClick }: BudgetDonutProps) => {
+const BudgetDonut = ({ data, colors, centerValue, onSliceClick, onCenterClick }: BudgetDonutProps) => {
   return (
     <div className={styles.chartContainer}>
       <ResponsivePie
@@ -42,7 +43,10 @@ const BudgetDonut = ({ data, colors, centerValue, onSliceClick }: BudgetDonutPro
         motionConfig="gentle"
         onClick={onSliceClick ? (datum) => onSliceClick(datum.data) : undefined}
       />
-      <div className={styles.donutCenter}>
+      <div
+        className={`${styles.donutCenter} ${onCenterClick ? styles.donutCenterClickable : ""}`}
+        onClick={onCenterClick}
+      >
         <div className={styles.donutValue}>
           ${formatWithCommas(centerValue.toString())}
         </div>

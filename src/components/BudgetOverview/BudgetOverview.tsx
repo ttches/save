@@ -3,9 +3,12 @@ import { useIncome } from "../../context/IncomeContext";
 import { useExpenses } from "../../context/ExpensesContext";
 import { useSideHustles } from "../../context/SideHustlesContext";
 import BudgetDonut from "../BudgetDonut/BudgetDonut";
-import useModal from "../../hooks/useModal";
 
-const OVERVIEW_COLORS = ["#ff638c", "#a6ff90", "#9fffff"];
+const OVERVIEW_COLOR_MAP: Record<string, string> = {
+  Expenses: "#ff638c",
+  Savings: "#a6ff90",
+  Leftovers: "#9fffff",
+};
 
 const DETAIL_COLORS = [
   "#d971d5",
@@ -22,12 +25,6 @@ const BudgetOverview = () => {
   const { monthlyIncome, savingsGoal } = useIncome();
   const { expenses } = useExpenses();
   const { sideHustles } = useSideHustles();
-  const { open, Modal } = useModal();
-  const [drillDown, setDrillDown] = useState<{
-    data: { id: string; label: string; value: number }[];
-    total: number;
-  } | null>(null);
-
   const income = Number(monthlyIncome) || 0;
   const savings = Number(savingsGoal) || 0;
   const totalExpenses = expenses.reduce((sum, e) => sum + (Number(e.cost) || 0), 0);
@@ -43,38 +40,39 @@ const BudgetOverview = () => {
     { id: "Leftovers", label: "Leftovers", value: Math.max(0, discretionary) },
   ].filter((d) => d.value > 0);
 
-  const handleSliceClick = (slice: { id: string }) => {
-    if (slice.id === "Expenses" && expenses.length > 0) {
-      setDrillDown({
-        data: expenses.map((e) => ({
-          id: e.name,
-          label: e.name,
-          value: Number(e.cost) || 0,
-        })),
-        total: totalExpenses,
-      });
-      open();
-    }
+  const overviewColors = overviewData.map((d) => OVERVIEW_COLOR_MAP[d.id]);
+
+  const [showDetail, setShowDetail] = useState(false);
+
+  const detailData = expenses.map((e) => ({
+    id: e.name,
+    label: e.name,
+    value: Number(e.cost) || 0,
+  }));
+
+  const handleCenterClick = () => {
+    if (showDetail) return setShowDetail(false);
+    if (expenses.length > 0) return setShowDetail(true);
   };
 
-  return (
-    <>
+  if (showDetail) {
+    return (
       <BudgetDonut
-        data={overviewData}
-        colors={OVERVIEW_COLORS}
-        centerValue={total}
-        onSliceClick={handleSliceClick}
+        data={detailData}
+        colors={DETAIL_COLORS}
+        centerValue={totalExpenses}
+        onCenterClick={handleCenterClick}
       />
-      <Modal>
-        {drillDown && (
-          <BudgetDonut
-            data={drillDown.data}
-            colors={DETAIL_COLORS}
-            centerValue={drillDown.total}
-          />
-        )}
-      </Modal>
-    </>
+    );
+  }
+
+  return (
+    <BudgetDonut
+      data={overviewData}
+      colors={overviewColors}
+      centerValue={total}
+      onCenterClick={handleCenterClick}
+    />
   );
 };
 
