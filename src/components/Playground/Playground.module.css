@@ -1,0 +1,48 @@
+.container {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: none;
+  padding: 8px;
+  max-width: 380px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card {
+  background-color: #191831;
+  border: 1px solid #3d3554;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.chartContainer {
+  position: relative;
+}
+
+.title {
+  color: #a196e4;
+  font-size: 0.875rem;
+  margin: 0 0 8px 0;
+}
+
+.donutCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.donutLabel {
+  color: #a196e4;
+  font-size: 0.6875rem;
+}
+
+.donutValue {
+  color: #9fffff;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
