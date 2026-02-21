@@ -1,7 +1,4 @@
 .container {
-  height: 100%;
-  overflow-y: auto;
-  overscroll-behavior: none;
   padding: 8px;
   max-width: 380px;
   margin: 0 auto;

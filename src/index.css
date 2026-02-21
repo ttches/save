@@ -14,10 +14,7 @@ body,
 }
 
 html {
-  overflow: hidden;
-  overscroll-behavior: none;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
+  overflow: auto;
 }
 
 body {
